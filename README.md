@@ -1,4 +1,4 @@
-# Ubuntu Gnomize
+# Ubuntu Gnomenize
 Enable the standard Gnome experience on Ubuntu.
 
 ### How to use
