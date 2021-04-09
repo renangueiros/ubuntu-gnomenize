@@ -12,23 +12,31 @@ echo ""
 read -p "Press Enter to continue: "
 echo ""
 
-exit | sudo su
-echo ""
+sudo -v && echo "" | exit 1
 echo -n "Updating packages information..."
 sudo apt update > /dev/null 2>&1
 
-exit | sudo su
-echo ""
-echo -n "Installing Gnome theme (Adwaita)..."
-sudo apt install gnome-session fonts-cantarell adwaita-icon-theme-full gnome-backgrounds -y > /dev/null 2>&1
+sudo -v && echo "" | exit 1
+echo -n "Installing Gnome default icons theme (Adwaita)..."
+sudo apt install adwaita-icon-theme-full -y > /dev/null 2>&1
 
-exit | sudo su
-echo ""
+sudo -v && echo "" | exit 1
+echo -n "Installing Gnome default font (CantarellAdwaita)..."
+sudo apt install fonts-cantarell -y > /dev/null 2>&1
+
+sudo -v && echo "" | exit 1
+echo -n "Installing Gnome Session..."
+sudo apt install gnome-session -y > /dev/null 2>&1
+
+sudo -v && echo "" | exit 1
+echo -n "Installing Gnome Wallpapers..."
+sudo apt install gnome-backgrounds -y > /dev/null 2>&1
+
+sudo -v && echo "" | exit 1
 echo -n "Setting Gnome as the default system session..."
 sudo update-alternatives --set x-session-manager /usr/bin/gnome-session
 
-exit | sudo su
-echo ""
+sudo -v && echo "" | exit 1
 echo -n "Setting Gnome theme (Adwaita) as the login screen theme"
 sudo update-alternatives --set gdm3-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource
 
